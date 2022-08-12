@@ -1,13 +1,33 @@
 package test;
 
-import domain.Gerente;
+import domain.*;
 
-public class TestSobreescritura {
+public class TestInstanceOf {
     
     public static void main(String[] args) {
         
-        Gerente gerente1 = new Gerente("Yolanda", 6300, "Produccion");
-        System.out.println("gerente1 = " + gerente1.obtenerDetalles());
-        
+        Empleado empleado = new Empleado("Yolanda", 6300);
+        //determinarTipo(empleado);
+        empleado = new Gerente("Carla", 20000, "Odontopediatria");
+        determinarTipo(empleado);
+    }
+    
+    public static void determinarTipo(Empleado empleado)
+    {
+        if(empleado instanceof Gerente)
+        {
+            System.out.println("Es de tipo gerente");
+            System.out.println("Departamento: " + ((Gerente) empleado).getDepartamento());
+        }
+        else if(empleado instanceof Empleado)
+        {
+            System.out.println("Es de tipo padre");
+            System.out.println("empleado = " + empleado.getNombre());
+        }
+        else if(empleado instanceof Object)
+        {
+            System.out.println("Es de tipo Object");
+            empleado.toString();
+        }
     }
 }
