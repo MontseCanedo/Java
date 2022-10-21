@@ -6,8 +6,8 @@ import enumeracion.Dias;
 public class TestEnumeraciones {
     
     public static void main(String[] args) {
-//        System.out.println("dia 1: " + Dias.LUNES);
-//        indicarDiaSemana(Dias.DOMINGO);
+        //System.out.println("dia 1: " + Dias.LUNES);
+        //indicarDiaSemana(Dias.DOMINGO);
         
         System.out.println("Continente no. 4: " + Continentes.AMERICA);
         System.out.println("numero de paises en el continente no. 4: " + Continentes.AMERICA.getPaises());

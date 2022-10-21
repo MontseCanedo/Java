@@ -7,13 +7,14 @@ public class TestInstanceOf {
     public static void main(String[] args) {
         
         Empleado empleado = new Empleado("Yolanda", 6300);
-        //determinarTipo(empleado);
+        determinarTipo(empleado);
         empleado = new Gerente("Carla", 20000, "Odontopediatria");
         determinarTipo(empleado);
     }
     
     public static void determinarTipo(Empleado empleado)
     {
+        //se pregunta de menos a más específico
         if(empleado instanceof Gerente)
         {
             System.out.println("Es de tipo gerente");
