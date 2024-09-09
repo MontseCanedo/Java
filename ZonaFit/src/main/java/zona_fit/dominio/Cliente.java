@@ -1,5 +1,7 @@
 package zona_fit.dominio;
 
+import java.util.Objects;
+
 public class Cliente {
     private int id;
     private String nombre;
@@ -54,6 +56,45 @@ public class Cliente {
 
     public void setMembresia(int membresia) {
         this.membresia = membresia;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", membresia=" + membresia + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 61 * hash + this.id;
+        hash = 61 * hash + Objects.hashCode(this.nombre);
+        hash = 61 * hash + Objects.hashCode(this.apellido);
+        hash = 61 * hash + this.membresia;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cliente other = (Cliente) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.membresia != other.membresia) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        return Objects.equals(this.apellido, other.apellido);
     }
     
     
