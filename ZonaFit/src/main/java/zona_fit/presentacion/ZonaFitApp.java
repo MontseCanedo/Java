@@ -42,7 +42,6 @@ public class ZonaFitApp {
 
     private static boolean ejecutarOpciones(Scanner sc, int opcion, IClienteDAO clienteDAO) {
         var salir = false;
-        //IClienteDAO clienteDao = new ClienteDAO();
         switch (opcion) {
             case 1 -> {
                 System.out.println("--- Listado de clientes ---");
@@ -78,10 +77,10 @@ public class ZonaFitApp {
                 System.out.println("Ingrese el id del cliente a modificar:");
                 var id = sc.nextInt();
                 System.out.print("Nombre ");
-                var nombre = sc.nextLine();
+                var nombre = sc.next();
                 System.out.println();
                 System.out.print("Apellido ");
-                var apellido = sc.nextLine();
+                var apellido = sc.next();
                 System.out.println();
                 System.out.print("Membresia ");
                 var membresia = sc.nextInt();
@@ -89,16 +88,22 @@ public class ZonaFitApp {
                 var clientes = clienteDAO.modificarCliente(cliente);
                 System.out.println("cliente modificado: " + cliente);
                 if (clientes) {
-                    System.out.println("Cliente agregado: " + cliente);
+                    System.out.println("Cliente modificado: " + cliente);
                 } else {
-                    System.out.println("No se pudo agregar cliente: " + cliente);
+                    System.out.println("No se pudo modificar cliente: " + cliente);
                 }
             }
-//            case 1 -> {
-//                System.out.println("--- Listado de clientes ---");
-//                var clientes = clienteDAO.listarClientes();
-//                clientes.forEach(System.out::println);
-//            }
+            case 5 -> {
+                System.out.println("Ingrese Id del cliente a eliminar");
+                var id = sc.nextInt();
+                var cliente = new Cliente(id);
+                var clientes = clienteDAO.eliminarCliente(cliente);
+                if (clientes) {
+                    System.out.println("Cliente eliminado: " + cliente);
+                } else {
+                    System.out.println("No se pudo eliminar cliente: " + cliente);
+                }
+            }
             case 6 -> {
                 System.out.println("Saliendo...");
                 salir = true;
